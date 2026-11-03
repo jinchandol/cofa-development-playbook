@@ -1,4 +1,4 @@
-"""Run: python app.py --port 8765 (loopback, one process)."""
+"""Loopback by default; --host 0.0.0.0 supports an allowed platform preview."""
 import argparse
 import json
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -10,7 +10,7 @@ from domain import RouteService, ServiceError
 BASE = Path(__file__).parent
 
 
-def make_server(port=8765, service=None):
+def make_server(port=8765, service=None, host='127.0.0.1'):
     service = service or RouteService(state_file=BASE / 'output' / 'state.json')
 
     class Handler(BaseHTTPRequestHandler):
@@ -78,15 +78,17 @@ def make_server(port=8765, service=None):
         def do_POST(self):
             self.send(405, {'error': '지원하지 않는 메서드'})
 
-    return ThreadingHTTPServer(('127.0.0.1', port), Handler)
+    return ThreadingHTTPServer((host, port), Handler)
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--port', type=int, default=8765)
+    parser.add_argument('--host', choices=('127.0.0.1', '0.0.0.0'), default='127.0.0.1')
     args = parser.parse_args()
-    server = make_server(args.port)
+    server = make_server(args.port, host=args.host)
     print(f'http://127.0.0.1:{server.server_port}', flush=True)
+    print(json.dumps({'bind_host': server.server_address[0], 'port': server.server_port}), flush=True)
     try:
         server.serve_forever()
     except KeyboardInterrupt:

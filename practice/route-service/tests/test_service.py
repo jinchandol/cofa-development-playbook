@@ -95,6 +95,19 @@ class DeveloperTests(unittest.TestCase):
             server.server_close()
             thread.join(timeout=3)
 
+    def test_platform_preview_binding(self):
+        server = make_server(0, self.service, host='0.0.0.0')
+        self.assertEqual(server.server_address[0], '0.0.0.0')
+        thread = threading.Thread(target=server.serve_forever, daemon=True)
+        thread.start()
+        try:
+            with urlopen(f'http://127.0.0.1:{server.server_port}/api/routes/R1', timeout=3) as response:
+                self.assertEqual(json.load(response)['stop_count'], 4)
+        finally:
+            server.shutdown()
+            server.server_close()
+            thread.join(timeout=3)
+
 
 if __name__ == '__main__':
     unittest.main()

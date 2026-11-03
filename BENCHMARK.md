@@ -3,6 +3,7 @@
 검토일: 2026-11-04 (Asia/Seoul). 기준 프로젝트: `2592faf`.
 검색어 `hynix hackathon`, `cofa probe`로 찾은 자료 중 문서·검증 접근이 서로 다른 6곳을 비교했다.
 아래 링크는 검토한 커밋에 고정했다. 전체 생태계 조사나 저장소의 품질 순위는 아니다.
+이 문서는 공개 자료 비교 시점(`3a9e391`)의 판단 이력이다. 이후 사용자 제공 응시환경 가이드를 직접 대조한 운영 보강은 [EXAM.md](EXAM.md), 최신 실행 결과는 모의 CONTROL을 따른다.
 
 ## 출처와 검토 범위
 
@@ -55,7 +56,7 @@
 수정 후 Developer 7/7 + Reviewer 역할 7/7 + 검증기 6/6 = **20/20, skip 0**.
 CLI 별도 프로세스 HTTP·JS 문법 검사 통과. 데이터 결함 12/12, 정상 사례 2/2, 원본 해시 불변도 유지됐다.
 실제 명령은 `python rehearsal/verify.py --stage final` → `python evaluator/score.py`이며 작업 폴더는 practice/route-service다.
-전체 결과는 [evidence.json](practice/route-service/rehearsal/evidence.json), [score.json](practice/route-service/rehearsal/score.json)에 있다.
+공개 자료 비교 당시 결과는 [evidence.json](https://github.com/jinchandol/cofa-development-playbook/blob/3a9e391ac0d54517cf4aa17f6364c175efeb089a/practice/route-service/rehearsal/evidence.json), [score.json](https://github.com/jinchandol/cofa-development-playbook/blob/3a9e391ac0d54517cf4aa17f6364c175efeb089a/practice/route-service/rehearsal/score.json)에 있다. 현재 버전에는 가이드 반영 테스트가 추가돼 있다.
 
 실행 건수 확인은 검증 누락의 일부만 막는다. 필수 AC별 테스트 연결과 기대값의 타당성을 대신하지 않는다.
 새 runner는 이 모의 과제용이며 범용 시험 설치 도구로 만든 것이 아니다.
@@ -64,7 +65,7 @@ CLI 별도 프로세스 HTTP·JS 문법 검사 통과. 데이터 결함 12/12, �
 
 - 별도 Skill/MCP/병렬 에이전트/설치 스크립트/프레임워크는 기존 범위와 설치 비용 때문에 도입하지 않았다.
 - 외부 자료가 제안하는 권한 완화·전역 설정·바인딩·모델·반입·문항 순서는 공식 지침으로 채택하지 않았다.
-- 현재 저장소는 요청대로 Private이다. 실제 응시 환경이 이 자료에 접근할 수 있는지와 반입 허용 여부는 미확인이다. 공개 전환하지 않는다.
+- 현재 저장소는 요청대로 Private이다. 비교 당시 반입은 미확인이었고, 이후 제공 가이드는 공개 자료 반입과 개인 파일 업로드 금지를 구분함을 확인했다. 이 Private 자료 반입을 허용으로 추정하지 않으며 공개 전환하지 않는다.
 - scrla의 [package.json](https://github.com/scrla/hynix-ai-hackathon-kit/blob/e29f1ace3718f6af6304c2291ddcfece6f0d6159/package.json)은 `verify`에서 scripts/preflight.mjs를 호출하지만 조회한 재귀 Git 트리에는 scripts/와 tests/가 없다. README에 있는 harness/·prompts/·.agents/도 조회 트리에 없다. ZIP 내부는 검토하지 않았고 외부 프로젝트를 설치·실행하지 않았으므로 런타임 실패를 관측했다고 주장하지 않는다.
-- 위 저장소들의 시험 설명은 작성자의 공개 주장이다. 이번 작업에서 주최사의 실제 공지/PDF를 확보·검증하지 않았으므로 실제 규칙·정확한 문항 구성으로 확정하지 않는다.
+- 공개 자료 비교 당시 시험 설명은 작성자의 주장으로만 다뤘다. 이후 사용자가 제공한 상세 가이드로 Browser·Helper·시간·제출·자료 반입을 대조했다(EXAM.md). 외부 저장소의 모든 주장이나 실제 문항 순서까지 검증한 것은 아니다.
 - 문서 보강이 제한시간 성적을 높였는지는 미측정이다. 같은 작성자의 비블라인드 검증이며 실제 브라우저 수동 조작·독립 Reviewer·180분 맹검은 다음 연습 과제다.

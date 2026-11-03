@@ -1,11 +1,15 @@
 {
-  "timestamp_utc": "2026-11-03T16:56:43.356013+00:00",
+  "timestamp_utc": "2026-11-03T17:12:54.282385+00:00",
   "stage": "final",
   "python": "3.10.1",
   "environment": {
     "platform": "Windows",
     "node_available": true,
-    "server_binding": "127.0.0.1",
+    "default_server_binding": "127.0.0.1",
+    "cli_bindings_tested": [
+      "127.0.0.1",
+      "0.0.0.0"
+    ],
     "platform_browser_preview": "not checked"
   },
   "review_independence": "same author, sequential role review, non-blind",
@@ -175,13 +179,13 @@
       "required": true,
       "status": "PASS",
       "exit_code": 0,
-      "output": "{\"status\": \"PASS\", \"loaded\": 7, \"run\": 7, \"executed\": 7, \"passed\": 7, \"skipped\": 0, \"failures\": 0, \"errors\": 0, \"expected_failures\": 0, \"unexpected_successes\": 0, \"exit_code\": 0}\ntest_edit_persists (test_service.DeveloperTests) ... ok\ntest_golden_route_and_blocked (test_service.DeveloperTests) ... ok\ntest_http_end_to_end (test_service.DeveloperTests) ... ok\ntest_list_search_filter (test_service.DeveloperTests) ... ok\ntest_profile_and_source_immutable (test_service.DeveloperTests) ... ok\ntest_quality_balances (test_service.DeveloperTests) ... ok\ntest_reverse_membership (test_service.DeveloperTests) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.606s\n\nOK\n",
+      "output": "{\"status\": \"PASS\", \"loaded\": 8, \"run\": 8, \"executed\": 8, \"passed\": 8, \"skipped\": 0, \"failures\": 0, \"errors\": 0, \"expected_failures\": 0, \"unexpected_successes\": 0, \"exit_code\": 0}\ntest_edit_persists (test_service.DeveloperTests) ... ok\ntest_golden_route_and_blocked (test_service.DeveloperTests) ... ok\ntest_http_end_to_end (test_service.DeveloperTests) ... ok\ntest_list_search_filter (test_service.DeveloperTests) ... ok\ntest_platform_preview_binding (test_service.DeveloperTests) ... ok\ntest_profile_and_source_immutable (test_service.DeveloperTests) ... ok\ntest_quality_balances (test_service.DeveloperTests) ... ok\ntest_reverse_membership (test_service.DeveloperTests) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 1.243s\n\nOK\n",
       "summary": {
         "status": "PASS",
-        "loaded": 7,
-        "run": 7,
-        "executed": 7,
-        "passed": 7,
+        "loaded": 8,
+        "run": 8,
+        "executed": 8,
+        "passed": 8,
         "skipped": 0,
         "failures": 0,
         "errors": 0,
@@ -201,7 +205,7 @@
       "required": true,
       "status": "PASS",
       "exit_code": 0,
-      "output": "{\"status\": \"PASS\", \"loaded\": 7, \"run\": 7, \"executed\": 7, \"passed\": 7, \"skipped\": 0, \"failures\": 0, \"errors\": 0, \"expected_failures\": 0, \"unexpected_successes\": 0, \"exit_code\": 0}\ntest_boolean_string_rejected (test_adversarial.ReviewTests) ... ok\ntest_corrupt_state_fails_without_overwrite (test_adversarial.ReviewTests) ... ok\ntest_http_errors (test_adversarial.ReviewTests) ... ok\ntest_noncontiguous_sequences_preserved (test_adversarial.ReviewTests) ... ok\ntest_patch_boundaries (test_adversarial.ReviewTests) ... ok\ntest_row_order_cannot_choose_conflict_winner (test_adversarial.ReviewTests) ... ok\ntest_write_failure_does_not_change_memory (test_adversarial.ReviewTests) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.628s\n\nOK\n",
+      "output": "{\"status\": \"PASS\", \"loaded\": 7, \"run\": 7, \"executed\": 7, \"passed\": 7, \"skipped\": 0, \"failures\": 0, \"errors\": 0, \"expected_failures\": 0, \"unexpected_successes\": 0, \"exit_code\": 0}\ntest_boolean_string_rejected (test_adversarial.ReviewTests) ... ok\ntest_corrupt_state_fails_without_overwrite (test_adversarial.ReviewTests) ... ok\ntest_http_errors (test_adversarial.ReviewTests) ... ok\ntest_noncontiguous_sequences_preserved (test_adversarial.ReviewTests) ... ok\ntest_patch_boundaries (test_adversarial.ReviewTests) ... ok\ntest_row_order_cannot_choose_conflict_winner (test_adversarial.ReviewTests) ... ok\ntest_write_failure_does_not_change_memory (test_adversarial.ReviewTests) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.661s\n\nOK\n",
       "summary": {
         "status": "PASS",
         "loaded": 7,
@@ -229,7 +233,7 @@
       "required": true,
       "status": "PASS",
       "exit_code": 0,
-      "output": "{\"status\": \"PASS\", \"loaded\": 6, \"run\": 6, \"executed\": 6, \"passed\": 6, \"skipped\": 0, \"failures\": 0, \"errors\": 0, \"expected_failures\": 0, \"unexpected_successes\": 0, \"exit_code\": 0}\ntest_all_skipped_is_incomplete (test_verification.VerificationTests) ... ok\ntest_expected_failure_only_is_incomplete (test_verification.VerificationTests) ... ok\ntest_failed_assertion_is_failure (test_verification.VerificationTests) ... ok\ntest_import_error_is_failure (test_verification.VerificationTests) ... ok\ntest_no_tests_is_incomplete (test_verification.VerificationTests) ... ok\ntest_pass_and_skip_are_counted_separately (test_verification.VerificationTests) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 2.022s\n\nOK\n",
+      "output": "{\"status\": \"PASS\", \"loaded\": 6, \"run\": 6, \"executed\": 6, \"passed\": 6, \"skipped\": 0, \"failures\": 0, \"errors\": 0, \"expected_failures\": 0, \"unexpected_successes\": 0, \"exit_code\": 0}\ntest_all_skipped_is_incomplete (test_verification.VerificationTests) ... ok\ntest_expected_failure_only_is_incomplete (test_verification.VerificationTests) ... ok\ntest_failed_assertion_is_failure (test_verification.VerificationTests) ... ok\ntest_import_error_is_failure (test_verification.VerificationTests) ... ok\ntest_no_tests_is_incomplete (test_verification.VerificationTests) ... ok\ntest_pass_and_skip_are_counted_separately (test_verification.VerificationTests) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 2.493s\n\nOK\n",
       "summary": {
         "status": "PASS",
         "loaded": 6,
@@ -253,7 +257,7 @@
       "required": true,
       "status": "PASS",
       "exit_code": 0,
-      "output": "{\"command\": \"python app.py --port 0\", \"http_status\": {\"/\": 200, \"/app.js\": 200, \"/api/routes/R1\": 200, \"/api/stops/S3/routes\": 200}, \"process_stopped_after_check\": true}\n"
+      "output": "{\"command\": \"python app.py --port 0\", \"bind_host\": \"127.0.0.1\", \"http_status\": {\"/\": 200, \"/app.js\": 200, \"/api/routes/R1\": 200, \"/api/stops/S3/routes\": 200}, \"process_stopped_after_check\": true}\n{\"command\": \"python app.py --port 0 --host 0.0.0.0\", \"bind_host\": \"0.0.0.0\", \"http_status\": {\"/\": 200, \"/app.js\": 200, \"/api/routes/R1\": 200, \"/api/stops/S3/routes\": 200}, \"process_stopped_after_check\": true}\n"
     },
     {
       "role": "javascript_syntax",

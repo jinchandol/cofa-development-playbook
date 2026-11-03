@@ -178,10 +178,10 @@
   "suite_counts": {
     "developer": {
       "status": "PASS",
-      "loaded": 7,
-      "run": 7,
-      "executed": 7,
-      "passed": 7,
+      "loaded": 8,
+      "run": 8,
+      "executed": 8,
+      "passed": 8,
       "skipped": 0,
       "failures": 0,
       "errors": 0,
