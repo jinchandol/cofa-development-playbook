@@ -1,0 +1,20 @@
+{
+  "data_defects": [
+    {"id":"D01","code":"conflicting_route","file":"routes.csv","rows":[3,4]},
+    {"id":"D02","code":"duplicate_stop","file":"stops.csv","rows":[4]},
+    {"id":"D03","code":"missing_stop","file":"stops.csv","rows":[6]},
+    {"id":"D04","code":"duplicate_occurrence","file":"route_stops.csv","rows":[4]},
+    {"id":"D05","code":"sequence_conflict","file":"route_stops.csv","rows":[6,7]},
+    {"id":"D06","code":"unresolved_route","file":"route_stops.csv","rows":[8]},
+    {"id":"D07","code":"unresolved_route","file":"route_stops.csv","rows":[9]},
+    {"id":"D08","code":"unresolved_stop","file":"route_stops.csv","rows":[10]},
+    {"id":"D09","code":"unresolved_stop","file":"route_stops.csv","rows":[11]},
+    {"id":"D10","code":"invalid_sequence","file":"route_stops.csv","rows":[12]},
+    {"id":"D11","code":"invalid_sequence","file":"route_stops.csv","rows":[15]},
+    {"id":"D12","code":"missing_reference","file":"route_stops.csv","rows":[16]}
+  ],
+  "valid_cases": ["loop_occurrences_preserved", "shared_stop_inactive_route_included"],
+  "seeded_implementation_defects": [
+    {"id":"I01","description":"active 문자열을 bool()로 변환하여 false 문자열이 true로 저장됨","severity":"P1","test":"test_boolean_string_rejected"}
+  ]
+}

@@ -1,0 +1,185 @@
+{
+  "interpretation": "non-blind synthetic rehearsal; not exam performance",
+  "data_detection": {
+    "detected": 12,
+    "total": 12,
+    "rate": 1.0,
+    "missed": [],
+    "matches": [
+      {
+        "id": "D01",
+        "file": "routes.csv",
+        "code": "conflicting_route",
+        "expected_rows": [
+          3,
+          4
+        ],
+        "observed_rows_for_code": [
+          3,
+          4
+        ],
+        "detected": true
+      },
+      {
+        "id": "D02",
+        "file": "stops.csv",
+        "code": "duplicate_stop",
+        "expected_rows": [
+          4
+        ],
+        "observed_rows_for_code": [
+          4
+        ],
+        "detected": true
+      },
+      {
+        "id": "D03",
+        "file": "stops.csv",
+        "code": "missing_stop",
+        "expected_rows": [
+          6
+        ],
+        "observed_rows_for_code": [
+          6
+        ],
+        "detected": true
+      },
+      {
+        "id": "D04",
+        "file": "route_stops.csv",
+        "code": "duplicate_occurrence",
+        "expected_rows": [
+          4
+        ],
+        "observed_rows_for_code": [
+          4
+        ],
+        "detected": true
+      },
+      {
+        "id": "D05",
+        "file": "route_stops.csv",
+        "code": "sequence_conflict",
+        "expected_rows": [
+          6,
+          7
+        ],
+        "observed_rows_for_code": [
+          6,
+          7
+        ],
+        "detected": true
+      },
+      {
+        "id": "D06",
+        "file": "route_stops.csv",
+        "code": "unresolved_route",
+        "expected_rows": [
+          8
+        ],
+        "observed_rows_for_code": [
+          8,
+          9
+        ],
+        "detected": true
+      },
+      {
+        "id": "D07",
+        "file": "route_stops.csv",
+        "code": "unresolved_route",
+        "expected_rows": [
+          9
+        ],
+        "observed_rows_for_code": [
+          8,
+          9
+        ],
+        "detected": true
+      },
+      {
+        "id": "D08",
+        "file": "route_stops.csv",
+        "code": "unresolved_stop",
+        "expected_rows": [
+          10
+        ],
+        "observed_rows_for_code": [
+          10,
+          11
+        ],
+        "detected": true
+      },
+      {
+        "id": "D09",
+        "file": "route_stops.csv",
+        "code": "unresolved_stop",
+        "expected_rows": [
+          11
+        ],
+        "observed_rows_for_code": [
+          10,
+          11
+        ],
+        "detected": true
+      },
+      {
+        "id": "D10",
+        "file": "route_stops.csv",
+        "code": "invalid_sequence",
+        "expected_rows": [
+          12
+        ],
+        "observed_rows_for_code": [
+          12,
+          15
+        ],
+        "detected": true
+      },
+      {
+        "id": "D11",
+        "file": "route_stops.csv",
+        "code": "invalid_sequence",
+        "expected_rows": [
+          15
+        ],
+        "observed_rows_for_code": [
+          12,
+          15
+        ],
+        "detected": true
+      },
+      {
+        "id": "D12",
+        "file": "route_stops.csv",
+        "code": "missing_reference",
+        "expected_rows": [
+          16
+        ],
+        "observed_rows_for_code": [
+          16
+        ],
+        "detected": true
+      }
+    ]
+  },
+  "valid_case_preservation": {
+    "loop_occurrences_preserved": true,
+    "shared_stop_inactive_route_included": true
+  },
+  "seeded_implementation_detection": [
+    {
+      "id": "I01",
+      "detected_in_baseline": true,
+      "retest_passed": true
+    }
+  ],
+  "source_unchanged_since_baseline": true,
+  "final_execution_passed": true,
+  "unmeasured": [
+    "blind interview discovery",
+    "independent reviewer effectiveness",
+    "180-minute performance",
+    "visual browser interaction",
+    "large data/concurrent processes"
+  ]
+}

@@ -1,0 +1,17 @@
+route_id,stop_id,sequence
+R1,S1,1
+R1,S2,2
+R1,S1,3
+R1,S2,2
+R2,S3,1
+R2,S4,2
+R2,S2,2
+R3,S1,1
+RX,S1,1
+R1,SX,4
+R1,S5,5
+R1,S3,0
+R4,S3,1
+R1,S3,4
+R1,S4,
+,S1,1
