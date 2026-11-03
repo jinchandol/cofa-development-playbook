@@ -43,10 +43,10 @@ README의 R-01~07에 추적 가능한 AC를 만들고 실제 실행 결과를 �
 python app.py --port 8765
 # http://127.0.0.1:8765
 python profile_data.py
-python -m unittest discover -s tests -v
-python -m unittest discover -s reviewer -p "test_*.py" -v
+python rehearsal/verify.py --stage final
 python evaluator/score.py
 ```
 
 완성 예시는 Python 3.10+ 표준 라이브러리만 사용한다. 편집 결과는 output/state.json에 저장되고 Git에 포함되지 않는다.
 로컬 단일 프로세스 연습용이다. 인터넷 공개 배포는 이 과제 범위 밖이다.
+공식 실행 기록은 위 verify.py로 수집한다. 원시 unittest의 종료 0만으로는 검사 0개/전부 skip을 구분할 수 없다.

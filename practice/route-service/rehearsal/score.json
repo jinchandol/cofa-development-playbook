@@ -175,6 +175,47 @@
   ],
   "source_unchanged_since_baseline": true,
   "final_execution_passed": true,
+  "suite_counts": {
+    "developer": {
+      "status": "PASS",
+      "loaded": 7,
+      "run": 7,
+      "executed": 7,
+      "passed": 7,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "expected_failures": 0,
+      "unexpected_successes": 0,
+      "exit_code": 0
+    },
+    "reviewer": {
+      "status": "PASS",
+      "loaded": 7,
+      "run": 7,
+      "executed": 7,
+      "passed": 7,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "expected_failures": 0,
+      "unexpected_successes": 0,
+      "exit_code": 0
+    },
+    "verification_harness": {
+      "status": "PASS",
+      "loaded": 6,
+      "run": 6,
+      "executed": 6,
+      "passed": 6,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "expected_failures": 0,
+      "unexpected_successes": 0,
+      "exit_code": 0
+    }
+  },
   "unmeasured": [
     "blind interview discovery",
     "independent reviewer effectiveness",

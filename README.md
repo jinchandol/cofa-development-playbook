@@ -11,6 +11,10 @@ SK하이닉스 또는 시험 주관사의 공식 자료가 아니다. 시험 조
 3. 최소 계약을 확정하면 Build → Independent Review → Deliver & Explain 순서로 진행한다.
 4. AI 없이 6문항에 각각 5분 동안 답한다. 서술형 연습 30분은 개발 180분과 별도로 둔다.
 
+먼저 사용자·사용 순간·업무 결과와 성공 지표를 확인하고, 필수 규칙/개선 목표/범위 밖을 구분한다.
+테스트 종료 코드만으로 완료라 하지 않는다. 실제 실행/skip 수, 대표 원본 대조, 사용자의 직접 확인 여부를 기록한다.
+공개 준비 저장소 6곳의 비교와 적용 근거는 [BENCHMARK.md](BENCHMARK.md)에 있다. 외부 코드·문구를 복제하지 않고 필요한 원칙만 자체 구현했다.
+
 우선순위: **필수 기능 > 데이터 정확성 > 실행 검증 > 판단 근거 > 도구 편의성**.
 새 Skill·MCP·설치 스크립트·병렬 에이전트는 기본 구성에 필요하지 않다.
 
@@ -41,10 +45,14 @@ python app.py --port 8765
 ```powershell
 cd practice/route-service
 python profile_data.py
-python -m unittest discover -s tests -v
-python -m unittest discover -s reviewer -p "test_*.py" -v
+python rehearsal/verify.py --stage final
 python evaluator/score.py
 ```
+
+검증기는 필수 테스트가 0개이거나 전부 skip이면 종료 코드 2(INCOMPLETE)로 막는다.
+선택 검사인 Node 문법 검사만 도구 부재 시 SKIP을 명시한다. 현재 테스트는 서비스/반례 14개와 검증기 회귀 6개다.
+실행 전에 Python 버전·기존 과제 스택·서버 포트·허용된 미리보기 경로를 확인한다. 현재 서버는 로컬 127.0.0.1 전용이다.
+실제 시험의 포트 프록시/바인딩 조건은 해당 안내로 확인하며 이 프로젝트가 플랫폼 미리보기까지 검증한 것은 아니다.
 
 독립 연습을 하려면 처음에는 **practice/route-service/README.md와 data/만** 읽는다.
 `evaluator/`, 이미 작성된 `CONTRACT.md`, `CONTROL.md`, `rehearsal/`, 구현 및 테스트는 첫 분석 전에 열지 않는다.
@@ -55,7 +63,7 @@ python evaluator/score.py
 ## 파일 안내
 
 ```text
-README.md / AGENTS.md / PROMPTS.md
+README.md / AGENTS.md / PROMPTS.md / BENCHMARK.md
 templates/CONTRACT.md / CONTROL.md
 practice/route-service/
   README.md                 # 응시자 문제
@@ -67,7 +75,8 @@ practice/route-service/
   reviewer/test_adversarial.py # 별도 기준의 반례
   CONTRACT.md / CONTROL.md   # 리허설 결과 계약·판단
   rehearsal/                # ANALYSIS/INTERVIEW/REVIEW/REPORT.md,
-                            # baseline/evidence/score.json, verify.py, cli_smoke.py
+                            # baseline/evidence/score/benchmark-before.json,
+                            # verify.py, run_suite.py, test_verification.py, cli_smoke.py
   evaluator/                # RULES.md, defects.json, score.py (초기 분석 금지)
 ```
 
@@ -79,6 +88,7 @@ practice/route-service/
 - README의 필수 기능과 AC를 실제 결과에 연결했는가?
 - 원본 해시와 조인/격리/중복제거 전후 행 수를 확인했는가?
 - 업무 답변의 근거와 미확정을 구분했는가?
-- 실행한 테스트만 통과로 기록했는가? Reviewer 분리 여부가 정확한가?
+- 실행한 테스트만 통과로 기록했는가? 0개/전부 skip을 걸렀는가? Reviewer 분리 여부가 정확한가?
+- 사용자 직접 확인과 AI 실행, 실제 AI 제안 판단을 구분했는가? 재개 메모의 다음 행동이 명확한가?
 - 개발자가 WHAT / WHY / HOW / VERIFY와 남은 한계를 설명할 수 있는가?
 - 실제 시험의 AGENTS.md 제출 요구·AI 허용 범위·반입 규정을 확인했는가?

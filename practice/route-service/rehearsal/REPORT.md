@@ -17,13 +17,16 @@
 
 ## 실제 결과
 
-- Developer 7/7, Reviewer 역할 반례 7/7 통과. JavaScript 문법 검사와 CLI 별도 프로세스 HTTP 확인 통과.
+- Developer 7/7, Reviewer 역할 반례 7/7, 검증기 회귀 6/6으로 총20/20·skip0. JavaScript 문법 검사와 CLI 별도 프로세스 HTTP 확인 통과.
 - 데이터 결함 12/12 탐지(100%), 미검출 없음. 정상 반복/공유 사례 2/2 보존.
 - 사전에 심은 구현 결함 I01 1/1 탐지·수정·재검증. 초기 Reviewer의 5 assertion 실패는 한 결함의 표현들이다.
 - 세 원본 CSV의 baseline 전/후·최종 해시 동일. 원본 경유 16=수용5+중복제거1+격리10.
 - 프로세스 문제 수정: raw 조인만으로 품질 판단하는 위험, 유효 참조 검사 순서, Windows 로그 인코딩, 검토 독립성의 과장 방지.
+- 공개 준비 자료 비교에서 실제 발견한 V01 수정: 테스트0개/전부skip의 원시 unittest 종료0을 통과로 수용할 가능성을 차단. 새 runner는 INCOMPLETE/exit2로 구분한다.
 
-증거는 baseline.json / evidence.json / score.json / REVIEW.md에 있다.
+공개 자료 6곳의 검토 범위·고정 출처·채택/보류는 루트 BENCHMARK.md에 있다.
+기존 CONTRACT/CONTROL/PROMPTS 안에 업무 목표·필수/개선 구분·실행 주체·AI 판단·재개 메모·실제 코드 질문을 보강했다.
+증거는 baseline.json / benchmark-before.json / evidence.json / score.json / REVIEW.md에 있다.
 실행 명령과 구현 설명은 ../CONTROL.md를 따른다. 테스트는 사용자의 기본 편집 상태를 바꾸지 않는 임시 저장 경로에서 수행한다.
 
 ## 현재 한계와 다음 리허설

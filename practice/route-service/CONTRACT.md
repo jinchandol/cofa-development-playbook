@@ -3,6 +3,17 @@
 근거: 과제 README R-01~07 / data/*.csv / rehearsal/INTERVIEW.md / evaluator/RULES.md B-01~07.
 상태: 요구=README 명시, 업무=합성 현업 확정, 기술=개발 판단. 실제 담당자의 답변이 아니다.
 
+## 업무 목표·필수/개선/범위 밖
+
+- 사용자/순간/결정: 합성 운영 담당자가 노선 경유를 조회하고 이름·운행 여부를 관리한다 (과제 README).
+- 현재 문제: 중복·참조 오류가 섞여 단순 조인으로는 정확한 경유를 표시할 수 없다. 실제 소요 시간·비용 기준값은 미측정이다.
+- 최소 흐름: 노선 검색 → 경유 상세 → 이름/운행 변경 → 저장 후 재조회.
+- 필수: R-01~07, 원본 불변, 업무 규칙에 맞는 경유·격리·저장, 실행 가능한 웹 서비스.
+- 개선 목표: 작업 시간 단축·화면 사용성은 정량 목표를 합의하지 않았으므로 달성했다고 주장하지 않는다. 문서 가독성 개선은 개발 판단이다.
+- 범위 밖: 지도·노선 생성/삭제·로그인·배포·다중 프로세스 협업 (과제 README/개발 범위).
+- 측정식/기준값: 원시 CSV 5/6/16행, raw inner join 18행. Golden R1 경유 4와 S3 역조회 2노선, 행 수지 일치는 필수 정확성 기준이며 업무 효율 지표와 구분한다.
+- 불가능한 결과 처리: 상충 엔터티 R3와 순서 충돌 R2를 임의 선택으로 정상화하지 않고 B-03/04의 격리·blocked 정책을 적용한다.
+
 ## Requirement Contract / AC
 
 | ID | 완료조건 | 상태/근거 | 연결 테스트 |
@@ -14,6 +25,10 @@
 | R-05 / AC-05 | 이름/active만 수정·재시작 유지, trim 1~80자·JSON bool 외400, 원본 불변 | 명시+B-06,07 | test_edit_persists / test_boolean_string_rejected / test_patch_boundaries |
 | R-06 / AC-06 | 원본 각 행은 accepted/deduplicated/quarantined 중 하나, 코드/행 번호와 합계 표시 | 명시+B-03~05 | test_quality_balances / evaluator/score.py |
 | R-07 / AC-07 | HTTP 페이지/API 실제 동작, 문서/명령/테스트/한계 기록 | 명시+개발 판단 | test_http_end_to_end / test_http_errors / evidence.json |
+
+위 AC는 모두 필수다. 빈 결과의 위반 0건으로 만족시킬 수 없다: 목록 3개, R1 유효 경유 4개, S3 역조회 2개를 확인한다.
+검증 대상이 0개/전부 skip이면 INCOMPLETE다. 검증기는 각 테스트 군의 실제 실행/통과/skip 수를 기록한다.
+연결 테스트: rehearsal/test_verification.py 6개 회귀 사례. 웹 화면 직접 확인은 CONTROL의 NOT_RUN으로 별도 관리한다.
 
 ## Data Contract
 

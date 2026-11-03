@@ -1,0 +1,36 @@
+{
+  "base_commit": "2592fafa92798a822a3ade3f011c72eb314bbf48",
+  "issue": "exit code alone accepts zero or entirely skipped tests",
+  "results": [
+    {
+      "case": "empty",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "<synthetic-fixture>",
+        "-v"
+      ],
+      "exit_code": 0,
+      "output": "\n----------------------------------------------------------------------\nRan 0 tests in 0.000s\n\nOK\n",
+      "old_verify_would_accept": true
+    },
+    {
+      "case": "all_skipped",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "<synthetic-fixture>",
+        "-v"
+      ],
+      "exit_code": 0,
+      "output": "test_placeholder (test_placeholder.Placeholder) ... skipped 'not implemented'\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK (skipped=1)\n",
+      "old_verify_would_accept": true
+    }
+  ]
+}

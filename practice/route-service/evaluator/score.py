@@ -34,10 +34,18 @@ def score():
     seeded = []
     for defect in truth['seeded_implementation_defects']:
         found = 'FAIL: ' + defect['test'] in initial_review.get('output', '')
-        retested = final_review.get('exit_code') == 0 and defect['test'] in final_review.get('output', '')
+        retested = (final_review.get('status') == 'PASS' and final_review.get('summary', {}).get('passed', 0) > 0
+                    and defect['test'] in final_review.get('output', ''))
         seeded.append({'id': defect['id'], 'detected_in_baseline': found, 'retest_passed': retested})
     source_unchanged = initial.get('pre_test_sha256') == final.get('post_test_sha256') == hashes()
-    final_execution_passed = bool(final.get('results')) and all(r['exit_code'] == 0 for r in final['results'])
+    results = {r['role']: r for r in final.get('results', [])}
+    required_roles = {'developer', 'reviewer', 'verification_harness', 'cli_startup'}
+    final_execution_passed = (final.get('stage') == 'final' and required_roles.issubset(results)
+                              and all(results[role].get('status') == 'PASS' and results[role].get('exit_code') == 0
+                                      for role in required_roles)
+                              and all(results[role].get('summary', {}).get('passed', 0) > 0
+                                      for role in ('developer', 'reviewer', 'verification_harness'))
+                              and not any(r.get('status') == 'FAIL' for r in results.values()))
     result = {
         'interpretation': 'non-blind synthetic rehearsal; not exam performance',
         'data_detection': {'detected': len(detected), 'total': len(truth['data_defects']),
@@ -46,6 +54,7 @@ def score():
         'seeded_implementation_detection': seeded,
         'source_unchanged_since_baseline': source_unchanged,
         'final_execution_passed': final_execution_passed,
+        'suite_counts': {role: r['summary'] for role, r in results.items() if 'summary' in r},
         'unmeasured': ['blind interview discovery', 'independent reviewer effectiveness',
                       '180-minute performance', 'visual browser interaction', 'large data/concurrent processes'],
     }
