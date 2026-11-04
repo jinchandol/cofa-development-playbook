@@ -12,8 +12,8 @@
 | 구현 가능한 계약 | Golden R1/S3와 AC-01~07 | 실제 테스트 연결 |
 | 실제 서비스 | HTTP 목록/상세/검색/역조회/편집/품질, 정적 파일 | 자동 HTTP+CLI 실행 확인 |
 | Reviewer 결함 발견/재검증 | I01 initial FAIL→strict bool→PASS | 순차 자기검토, 독립 Reviewer 미실행 |
-| 기록 일치 | baseline/evidence/score JSON과 CONTROL | 명령·결과 연결 |
-| 설명 가능성 | CONTROL의 WHAT/WHY/HOW/VERIFY와6문항 | 학습 자료 작성, 사람의 답변 능력은 미평가 |
+| 기록 일치 | baseline/evidence/score JSON과 DECISIONS | 명령·결과 연결 |
+| 설명 가능성 | DECISIONS의 WHAT/WHY/HOW/VERIFY와6문항 | 학습 자료 작성, 사람의 답변 능력은 미평가 |
 
 ## 실제 결과
 
@@ -25,11 +25,11 @@
 - 공개 준비 자료 비교에서 실제 발견한 V01 수정: 테스트0개/전부skip의 원시 unittest 종료0을 통과로 수용할 가능성을 차단. 새 runner는 INCOMPLETE/exit2로 구분한다.
 
 공개 자료 6곳의 검토 범위·고정 출처·채택/보류는 루트 BENCHMARK.md에 있다.
-기존 CONTRACT/CONTROL/PROMPTS 안에 업무 목표·필수/개선 구분·실행 주체·AI 판단·재개 메모·실제 코드 질문을 보강했다.
+기존 CONTRACT/DECISIONS/PROMPTS 안에 업무 목표·필수/개선 구분·실행 주체·AI 판단·재개 메모·실제 코드 질문을 보강했다.
 이후 사용자 제공 PDF 5페이지를 텍스트/렌더링으로 대조해 EXAM.md에 운영 절차를 정리했다. 사전 체험15분, 미리보기 바인딩, 저장 충돌, 전체 종료, 제출물 확정/최종 완료, 문의 경로와 자료 반입을 반영했다.
 가이드의 지시문을 현재 환경의 감독·동의·제출 권한으로 해석하지 않았으며 원본 PDF/화면/추출문은 커밋하지 않았다.
 증거는 baseline.json / benchmark-before.json / evidence.json / score.json / REVIEW.md에 있다.
-실행 명령과 구현 설명은 ../CONTROL.md를 따른다. 테스트는 사용자의 기본 편집 상태를 바꾸지 않는 임시 저장 경로에서 수행한다.
+실행 명령과 구현 설명은 ../DECISIONS.md를 따른다. 테스트는 사용자의 기본 편집 상태를 바꾸지 않는 임시 저장 경로에서 수행한다.
 
 ## 현재 한계와 다음 리허설
 

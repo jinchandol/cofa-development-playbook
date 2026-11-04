@@ -8,7 +8,7 @@ SK하이닉스 또는 시험 주관사의 공식 자료가 아니다. 시험 조
 
 1. [EXAM.md](EXAM.md)에서 준비/실제 응시 구분과 저장·시간·제출 절차를 확인한다. 현재 Private 저장소는 연습용이며 안내서의 공개 자료 반입 허용을 그대로 적용할 수 없다.
 2. 실제 과제 README와 데이터만 읽고 [PROMPTS.md](PROMPTS.md)의 Analyze & Interview를 실행한다.
-3. 준비 연습에서는 [CONTRACT 템플릿](templates/CONTRACT.md), [CONTROL 템플릿](templates/CONTROL.md)을 사용한다. 실제 응시에서는 허용된 자료 경로·과제 지정 파일명을 따른다.
+3. 준비 연습에서는 [CONTRACT 템플릿](templates/CONTRACT.md), [DECISIONS 템플릿](templates/DECISIONS.md)을 사용한다. 실제 응시에서는 허용된 자료 경로·과제 지정 파일명을 따른다.
 4. 최소 계약을 확정하면 Build → Independent Review → Deliver & Explain 순서로 진행한다.
 5. AI 없이 6문항에 각각5분 답하는 연습을 한다. 실제 문항 수는 응시 화면을 확인하며, 서술형·질문 준비 대기도 전체 종료 시각 안에 마쳐야 한다.
 
@@ -64,7 +64,7 @@ Browser: PORT=8765, 경로=/
 실행 전에 Python 버전·기존 스택·실제 포트를 확인하고 서버 터미널을 유지한다. 두 모드의 로컬 HTTP/CLI 검증과 실제 플랫폼 미리보기는 구분한다.
 
 독립 연습을 하려면 처음에는 **practice/route-service/README.md와 data/만** 읽는다.
-`evaluator/`, 이미 작성된 `CONTRACT.md`, `CONTROL.md`, `rehearsal/`, 구현 및 테스트는 첫 분석 전에 열지 않는다.
+`evaluator/`, 이미 작성된 `CONTRACT.md`, `DECISIONS.md`, `rehearsal/`, 구현 및 테스트는 첫 분석 전에 열지 않는다.
 평가자는 `evaluator/RULES.md`로 질문에 답하고, 분석자가 제출한 질문/탐지 목록을 정답과 대조한다.
 폴더 분리는 접근 통제가 아니다. 블라인드 연습은 별도 사본에서 evaluator/와 해설·구현을 제거해 진행한다.
 현재 포함된 완성 예시는 해설용이며 시간제한 실험의 성적이 아니다.
@@ -73,7 +73,7 @@ Browser: PORT=8765, 경로=/
 
 ```text
 README.md / AGENTS.md / PROMPTS.md / BENCHMARK.md / EXAM.md
-templates/CONTRACT.md / CONTROL.md
+templates/CONTRACT.md / DECISIONS.md
 practice/route-service/
   README.md                 # 응시자 문제
   data/*.csv                # 수정 금지 합성 원본
@@ -82,14 +82,14 @@ practice/route-service/
   web/index.html / app.js / style.css
   tests/test_service.py      # Developer 실행 검증
   reviewer/test_adversarial.py # 별도 기준의 반례
-  CONTRACT.md / CONTROL.md   # 리허설 결과 계약·판단
+  CONTRACT.md / DECISIONS.md   # 리허설 결과 계약·판단
   rehearsal/                # ANALYSIS/INTERVIEW/REVIEW/REPORT.md,
                             # baseline/evidence/score/benchmark-before.json,
                             # verify.py, run_suite.py, test_verification.py, cli_smoke.py
   evaluator/                # RULES.md, defects.json, score.py (초기 분석 금지)
 ```
 
-실제 실행 결과·검출률·현재 한계는 [CONTROL](practice/route-service/CONTROL.md)과 [리허설 보고](practice/route-service/rehearsal/REPORT.md)에 기록한다.
+실제 실행 결과·검출률·현재 한계는 [DECISIONS](practice/route-service/DECISIONS.md)과 [리허설 보고](practice/route-service/rehearsal/REPORT.md)에 기록한다.
 `.gitattributes`는 체크아웃 환경에 따라 CSV 줄바꿈과 기준 해시가 달라지는 것을 방지한다.
 
 ## 제출 전

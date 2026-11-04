@@ -3,16 +3,16 @@
 검토일: 2026-11-04 (Asia/Seoul). 기준 프로젝트: `2592faf`.
 검색어 `hynix hackathon`, `cofa probe`로 찾은 자료 중 문서·검증 접근이 서로 다른 6곳을 비교했다.
 아래 링크는 검토한 커밋에 고정했다. 전체 생태계 조사나 저장소의 품질 순위는 아니다.
-이 문서는 공개 자료 비교 시점(`3a9e391`)의 판단 이력이다. 이후 사용자 제공 응시환경 가이드를 직접 대조한 운영 보강은 [EXAM.md](EXAM.md), 최신 실행 결과는 모의 CONTROL을 따른다.
+이 문서는 공개 자료 비교 시점(`3a9e391`)의 판단 이력이다. 이후 사용자 제공 응시환경 가이드를 직접 대조한 운영 보강은 [EXAM.md](EXAM.md), 최신 실행 결과는 모의 DECISIONS을 따른다.
 
 ## 출처와 검토 범위
 
 | 공개 저장소·고정 커밋 | 실제 읽은 범위 | 유용한 점·우리 적용 | 보류/한계 |
 |---|---|---|---|
 | [keepdev0919/hynix · 0f60a09](https://github.com/keepdev0919/hynix/tree/0f60a090e6d08cee31a6520da6f3d9648d4a3b7d) | README, AGENTS, CONTEXT, FOLLOWUP, Git 트리/메타데이터 | 실제 함수·상태·실패 조건·대안을 묻는 서술형 연습. 필수 조건과 개선 지표를 구분 → PROMPTS/두 템플릿 | HTML 브리핑 Skill, 권한 설정, 문항 순서 고정 주장 미도입. license=null, LICENSE 파일 없음 |
-| [Iremos/cofa-starter · 94998a6](https://github.com/Iremos/cofa-starter/tree/94998a67dafd086c74ac758eb2e989dd1f624acd) | README, templates/DECISIONS.md, templates/HANDOFF.md, Git 트리/메타데이터 | 사용자의 검증과 AI 실행 구분, AI 판단 근거·세션 재개 정보 → CONTROL에 통합 | 설치/추가 Skill/여러 문서·매 단계 승인 절차 미도입. MIT 메타데이터 확인 |
+| [Iremos/cofa-starter · 94998a6](https://github.com/Iremos/cofa-starter/tree/94998a67dafd086c74ac758eb2e989dd1f624acd) | README, templates/DECISIONS.md, templates/HANDOFF.md, Git 트리/메타데이터 | 사용자의 검증과 AI 실행 구분, AI 판단 근거·세션 재개 정보 → DECISIONS에 통합 | 설치/추가 Skill/여러 문서·매 단계 승인 절차 미도입. MIT 메타데이터 확인 |
 | [hamjoon2003/sk-hynix-2nd-harness · 222a311](https://github.com/hamjoon2003/sk-hynix-2nd-harness/tree/222a3119559c2b282ab3252a9ffb13e86c2749c1) | README, TASK.md, tools/test_template.py, Git 트리/메타데이터 | 검사 0건·전부 skip을 통과로 보지 않는 원칙, 짧은 환경 확인 → 실제 검증기 보강 | 환경 스캐너·판정 엔진은 복제하지 않음. MIT 메타데이터 확인 |
-| [sjj5563/hx-rules · c3fd891](https://github.com/sjj5563/hx-rules/tree/c3fd891107f73a22c2bdc6bb1510ffe970fbe7f0) | AGENTS.md, PROMPTS.md, Git 트리/메타데이터 (README 없음) | 사용자/결정/성공 기준 확인, 핵심 숫자의 원본 대조 → CONTRACT/CONTROL/프롬프트 | 고정 질문 수·일률적인 중단/모델 전환은 미도입. license=null, LICENSE 파일 없음 |
+| [sjj5563/hx-rules · c3fd891](https://github.com/sjj5563/hx-rules/tree/c3fd891107f73a22c2bdc6bb1510ffe970fbe7f0) | AGENTS.md, PROMPTS.md, Git 트리/메타데이터 (README 없음) | 사용자/결정/성공 기준 확인, 핵심 숫자의 원본 대조 → CONTRACT/DECISIONS/프롬프트 | 고정 질문 수·일률적인 중단/모델 전환은 미도입. license=null, LICENSE 파일 없음 |
 | [B0neh3ad/cofa-toolkit · 996635b](https://github.com/B0neh3ad/cofa-toolkit/tree/996635b6378ff4298de04de8794a04c95f1cd928) | README, Git 트리/메타데이터 | 필요한 구성만 선택, 출처/실행 성공/미확인을 분리하는 접근 → 기존 최소 구성 유지 | Skill/MCP·vendor·설치 도구 도입 안 함. 메타데이터 MIT이며 README가 별도 외부 자료 조건을 명시; 개별 vendor는 미검토 |
 | [scrla/hynix-ai-hackathon-kit · e29f1ac](https://github.com/scrla/hynix-ai-hackathon-kit/tree/e29f1ace3718f6af6304c2291ddcfece6f0d6159) | README, package.json, Git 트리/메타데이터 | 작은 사용자 흐름과 검증 명령 분리라는 방향은 기존 플레이북과 일치 | Next.js 스택 교체 안 함. 아래 문서/파일 불일치 때문에 실행 키트로 채택 안 함. MIT 메타데이터 확인 |
 
@@ -27,10 +27,10 @@
 | AC는 있지만 사용자·업무 결과·현재값/목표가 별도로 정리되지 않음 | templates/CONTRACT.md, PROMPTS.md, 모의 CONTRACT | 업무 목표·측정식·출처 추가. 없는 기준값은 미확인으로 유지 |
 | 필수 조건과 개선 목표가 섞일 수 있음 | 위 파일 및 AGENTS.md | 필수/개선/범위 밖 구분. 불가능한 목표를 조용히 완화하지 않음 |
 | 종료 0만으로 테스트 완료 판단 | rehearsal/run_suite.py, verify.py, evaluator/score.py | 실제 실행/통과/skip 건수 기록. 검사 0개·전부 skip·expected failure만 있으면 INCOMPLETE/exit 2 |
-| AI 실행과 사용자의 확인을 혼동할 수 있음 | templates/CONTROL.md, 모의 CONTROL | 실행 주체와 수동 확인 절차/기대값. 미실행을 그대로 표시 |
-| AI의 제안을 어떻게 판단했는지 기록 부족 | 위 CONTROL 파일 | 수용/수정/거절·판단 주체·증거. 사용자의 결정을 지어내지 않음 |
-| 세션을 바꿀 때 다음 행동이 불명확 | CONTROL 내 재개 메모 | 기존 문서 안에 목표/확정/미확정/실행 근거/다음 첫 행동만 기록 |
-| 서술형이 일반 질문 위주 | PROMPTS.md, CONTROL | 실제 함수·상태 저장·오류 파급·대안·AI 판단을 묻는 6개 연습 범주 |
+| AI 실행과 사용자의 확인을 혼동할 수 있음 | templates/DECISIONS.md, 모의 DECISIONS | 실행 주체와 수동 확인 절차/기대값. 미실행을 그대로 표시 |
+| AI의 제안을 어떻게 판단했는지 기록 부족 | 위 DECISIONS 파일 | 수용/수정/거절·판단 주체·증거. 사용자의 결정을 지어내지 않음 |
+| 세션을 바꿀 때 다음 행동이 불명확 | DECISIONS 내 재개 메모 | 기존 문서 안에 목표/확정/미확정/실행 근거/다음 첫 행동만 기록 |
+| 서술형이 일반 질문 위주 | PROMPTS.md, DECISIONS | 실제 함수·상태 저장·오류 파급·대안·AI 판단을 묻는 6개 연습 범주 |
 
 기존 요구-ID/데이터 프로파일/Golden Case/반례 검토는 이미 있으므로 별도 양식을 추가하지 않았다.
 추가 코드는 실제 재현한 검증 취약점의 수정과 회귀 테스트뿐이다. 앱의 업무 동작·CSV·스택·바인딩은 바꾸지 않았다.

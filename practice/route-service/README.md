@@ -18,7 +18,7 @@
 | R-04 | 정류장 역조회 | 정류장 ID로 경유 노선 목록을 조회. 운휴 노선 포함 여부·오류 노선 취급은 현업 확인 |
 | R-05 | 노선 편집 | 이름과 운행 여부 수정. 잘못된 입력 거부, 새로고침/서버 재시작 뒤 유지. 원본 CSV 불변 |
 | R-06 | 데이터 품질 표시 | 제외·중복제거·격리 근거와 행 번호(헤더 제외 1부터), 입력/처리 후 수지를 확인 가능 |
-| R-07 | 실행·검증·설명 | 실행 가능한 웹 서비스, AGENTS.md, CONTRACT.md, CONTROL.md, 테스트와 실제 명령/결과 |
+| R-07 | 실행·검증·설명 | 실행 가능한 웹 서비스, AGENTS.md, CONTRACT.md, DECISIONS.md, 테스트와 실제 명령/결과 |
 
 CSV 파일은 `routes(route_id,name,active)`, `stops(stop_id,name)`, `route_stops(route_id,stop_id,sequence)`다.
 active의 원본 표기는 `true`/`false`다. route_stops의 한 행은 경유 지점으로 보이지만 정확한 관측 단위와 정책은 확인해야 한다.

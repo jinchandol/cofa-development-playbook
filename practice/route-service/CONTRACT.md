@@ -28,7 +28,7 @@
 
 위 AC는 모두 필수다. 빈 결과의 위반 0건으로 만족시킬 수 없다: 목록 3개, R1 유효 경유 4개, S3 역조회 2개를 확인한다.
 검증 대상이 0개/전부 skip이면 INCOMPLETE다. 검증기는 각 테스트 군의 실제 실행/통과/skip 수를 기록한다.
-연결 테스트: rehearsal/test_verification.py 6개 회귀 사례. 웹 화면 직접 확인은 CONTROL의 NOT_RUN으로 별도 관리한다.
+연결 테스트: rehearsal/test_verification.py 6개 회귀 사례. 웹 화면 직접 확인은 DECISIONS의 NOT_RUN으로 별도 관리한다.
 AC-07-P(제공 가이드 반영): 기본127.0.0.1을 유지하고 `--host 0.0.0.0`을 명시하면 해당 주소로 바인딩한다.
 연결 테스트: test_platform_preview_binding, cli_smoke.py의 두 모드 실제 실행. 실제 플랫폼 Browser 통과는 별도 수동 확인 대상이다.
 
