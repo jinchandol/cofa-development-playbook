@@ -4,12 +4,40 @@
 SK하이닉스 또는 시험 주관사의 공식 자료가 아니다. 시험 조건은 사용자가 제공한 상세 가이드를 대조해 보강했으며 실제 최신 공지·과제 안내가 우선한다.
 모든 모의 데이터와 업무 규칙은 합성이다. 실제 문제·회사 데이터·개인정보·원본 PDF는 포함하지 않는다.
 
+## 과제 원본을 보존하며 가져오기
+
+과제 README.md가 있는 폴더에서 실행한다. Windows에서는 Git Bash, Linux에서는 sh를 사용한다. 플레이북은 과제 옆의 별도 폴더로 가져온다.
+
+```sh
+git clone https://github.com/jinchandol/cofa-development-playbook.git ../cofa-playbook && sh ../cofa-playbook/install.sh
+```
+
+```text
+작업공간/
+  과제/                  # 작업 위치 유지
+    README.md            # 과제 원본 유지
+    AGENTS.md            # 기존 내용 뒤에 참조 블록 추가
+    data/                # 과제 원본 유지
+  cofa-playbook/          # 별도 Git 저장소, 설치 후에도 유지
+    README.md            # 준비 안내
+    AGENTS.md / PROMPTS.md / templates/ / install.sh
+```
+
+설치기는 과제 AGENTS.md 끝에 플레이북 경로를 읽도록 하는 짧은 블록만 추가한다. 파일이 없으면 생성하며 같은 경로로 재실행해도 중복 추가하지 않는다. 과제 README.md·데이터·.git·.codex 설정은 변경하지 않는다. 기존의 불완전한 참조 블록이나 다른 경로가 발견되면 덮어쓰지 않고 중단한다.
+플레이북 파일 전체를 과제 루트로 복사하거나 기존 저장소에 pull/merge하지 않는다. 목적지 ../cofa-playbook이 이미 사용 중이면 clone을 중단하고 기존 폴더를 확인한다.
+
+위 URL은 현재 Private 저장소의 개인 PC 연습용이다. 실제 응시에서는 공식적으로 허용된 저장소와 경로를 사용하며, Private 자료 반입이 허용된 것으로 추정하지 않는다.
+
 ## 시작
 
-1. 실제 과제 README와 데이터만 읽고 [PROMPTS.md](PROMPTS.md)의 Analyze & Interview를 실행한다.
+1. 설치 후 과제 폴더에서 Codex에 아래 요청을 입력한다. [PROMPTS.md](PROMPTS.md#시작)의 시작 요청 하나로 분석·리뷰·개발을 이어간다.
 2. 준비 연습에서는 [CONTRACT 템플릿](templates/CONTRACT.md), [DECISIONS 템플릿](templates/DECISIONS.md)을 사용한다. 실제 응시에서는 허용된 자료 경로·과제 지정 파일명을 따른다.
 3. 분석·인터뷰 → 요구사항 리뷰 → 개발 → 구현 리뷰 → 이해·제출 순서로 진행한다. 먼저 구현할 요구부터 검토하고, 수정은 해당 결과물을 작성·개발했던 에이전트가 수행한다.
 4. AI 없이 6문항에 각각5분 답하는 연습을 한다. 실제 문항 수는 응시 화면을 확인하며, 서술형·질문 준비 대기도 전체 종료 시각 안에 마쳐야 한다.
+
+```text
+과제 AGENTS.md를 읽고, 거기에 연결된 PROMPTS.md의 '시작' 요청대로 진행해줘.
+```
 
 응시 환경 준비와 제출 때는 아래 [체크리스트](#응시와-제출-체크리스트)를 확인한다.
 
@@ -18,8 +46,8 @@ SK하이닉스 또는 시험 주관사의 공식 자료가 아니다. 시험 조
 공개 준비 저장소 6곳의 비교와 적용 근거는 [BENCHMARK.md](BENCHMARK.md)에 있다. 외부 코드·문구를 복제하지 않고 필요한 원칙만 자체 구현했다.
 
 우선순위: **필수 기능 > 데이터 정확성 > 실행 검증 > 판단 근거 > 도구 편의성**.
-새 Skill·MCP·설치 스크립트·병렬 에이전트는 기본 구성에 필요하지 않다.
-서브에이전트를 지원·허용하는 환경에서는 핵심 구현·자체검증 후 별도 Reviewer 1개를 호출하고 결과를 기다린다. [구현 리뷰 프롬프트](PROMPTS.md#4-implementation-review-개발-후)와 원자료·구현 경로·기존 개발 에이전트 ID/세션을 전달한다. Reviewer는 보고만 반환하고 원래 개발 담당 에이전트가 수정·자체검증한 뒤 같은 Reviewer가 재검증한다. 메인 에이전트가 개발을 맡아도 이 흐름을 사용한다.
+추가 Skill·MCP·병렬 구현 팀은 기본 구성에 필요하지 않다.
+서브에이전트를 지원·허용하는 환경에서는 핵심 구현·자체검증 후 별도 Reviewer 1개를 호출하고 결과를 기다린다. [Reviewer 전달문](PROMPTS.md#reviewer-전달문)에 단계=구현과 원자료·구현 경로·기존 개발 에이전트 ID/세션을 채운다. Reviewer는 보고만 반환하고 원래 개발 담당 에이전트가 수정·자체검증한 뒤 같은 Reviewer가 재검증한다. 메인 에이전트가 개발을 맡아도 이 흐름을 사용한다.
 
 ## 180분 운영 예시
 
@@ -75,6 +103,7 @@ Browser: PORT=8765, 경로=/
 
 ```text
 README.md / AGENTS.md / PROMPTS.md / BENCHMARK.md
+install.sh                  # 과제 AGENTS에 참조 블록만 추가
 templates/CONTRACT.md / DECISIONS.md
 practice/route-service/
   README.md                 # 응시자 문제

@@ -78,3 +78,13 @@ Developer 문서 확인: 추적된 Markdown14개의 로컬 링크/제목 참조�
 후속 사용자 지시로 수정 책임을 'Developer 역할'에서 '해당 결과물을 작성·개발한 기존 담당 에이전트'로 명확히 했다. 기존 담당자의 ID/세션을 리뷰 입력·기록에 남기고 조정자는 지적 전달을 맡는다. 이번 지침 보완도 원래 문서 작성 담당(`/root`)가 수행했으며 새 별도 Reviewer 검토로 기록하지 않는다.
 
 Codex의 개발 후 서브에이전트 리뷰 요청에 따라, 지원·허용되는 환경에서는 핵심 구현·자체검증 후 Reviewer 1개를 실제 호출해 결과를 받도록 기본 흐름을 명확히 했다. 원래 개발 담당자 수정→같은 Reviewer 재검증을 유지한다. [공식 Subagents 문서](https://learn.chatgpt.com/docs/agent-configuration/subagents?surface=app)에서 직접 요청/AGENTS.md 지침에 의한 위임을 확인했다. 이번 보완은 지침 변경이며 새 앱 구현 리뷰의 실행 증거로 세지 않는다.
+
+### PROMPTS 정리와 과제 원본 보존 반입
+
+- 기준69d45ff의 PROMPTS81줄을46줄로 정리했다. 사용자용 시작/이어서/이해 확인 요청과 에이전트용 공통 Reviewer 전달문으로 구분하고, 상세 분석/완료 조건은 기존 AGENTS와 템플릿을 참조한다. 기존10개 요구의 유지 여부를 별도 Reviewer가 대조했다.
+- 사용자가 제시한 [install.sh](https://github.com/keepdev0919/hynix/blob/main/install.sh)와 README를 읽고 반입 진입점만 참고했다. 외부 스크립트는 실행하지 않았다. 자체 install.sh는 별도 폴더의 플레이북을 참조하는 블록만 과제 AGENTS 끝에 추가한다. 기존 AGENTS에 추가하는 것은 후속 사용자 지시로 허용됐다.
+- **SETUP-01/P1:** 별도 Reviewer가 clone 실패 후 다음 줄의 설치기가 실행될 수 있음을 지적했다. 원래 Developer(`/root`)가 README 명령을 `clone && 설치`로 수정했고 같은 Reviewer가 해소를 정적 확인했다.
+- **SETUP-02/P1:** 같은 Reviewer가 표식/경로의 존재만으로 불완전 블록을 설치 완료로 판단함을 지적했다. 원래 Developer가 표식 개수·순서·완결성과 블록 본문 전체를 검사하도록 수정했고 같은 Reviewer가 해소를 정적 확인했다. 운영 안내의 README도 플레이북 README로 구체화했다.
+- **Developer 실행:** 현재 소스의 로컬 Git fixture와 Git Bash로19개 시나리오를 실행해 모두 기대 결과와 일치했다(skip0, 명령 전체 종료0, 임시 폴더 정리 완료). 기존 바이트 뒤에 AGENTS만 추가/없으면 생성, README·data·.git·.codex 해시 불변, 반복 설치, 공백 경로/CRLF, 불완전·역순·중복·변형 블록, 잘못된 폴더/설치 경로/소스 누락, clone 성공/실패와 설치 종속성을 확인했다. 네트워크 인증/실제 시험 반입 성공의 검증은 아니다.
+- 최초 임시 검증기 정리에 Windows 파일 잠금이 발생했으나 경로를 확인해 정리한 뒤 재실행했다. Git Bash 실행은 샌드박스 차단을 구분해 승인된 실행으로 검사했으며 권한 설정을 바꾸지 않았다.
+- 별도 Reviewer(`/root/readonly_document_review`)는 파일 수정·테스트 실행 없이 보고와 정적 재검토만 했다. 실행19개는 Developer의 검증이다. 문서14개의 로컬 링크/제목 참조·원본 CSV 해시도 확인했다. 앱/데이터는 변경하지 않아 기존21개 앱/검증기 테스트를 재실행하지 않았다.
