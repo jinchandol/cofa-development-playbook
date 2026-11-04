@@ -16,15 +16,15 @@
 
 ## Requirement Contract / AC
 
-| ID | 완료조건 | 상태/근거 | 연결 테스트 |
-|---|---|---|---|
-| R-01 / AC-01 | 5/6/16행 프로파일, 키/결측/관계·조인18행을 보고, 원본 해시 불변 | 명시+분석 | test_profile_and_source_immutable |
-| R-02 / AC-02 | R1,R2,R4만 목록. 이름 부분검색/운행 필터, count/blocked 표시 | 명시+B-03,06 | test_list_search_filter |
-| R-03 / AC-03 | R1=S1,S2,S1,S3 (순번1,2,3,4); R2 blocked·경유0 | 명시+B-01,04,05 | test_golden_route_and_blocked |
-| R-04 / AC-04 | S3→R1,R4, S1→R1 한 건, 없는 정류장404 | 명시+B-02 | test_reverse_membership |
-| R-05 / AC-05 | 이름/active만 수정·재시작 유지, trim 1~80자·JSON bool 외400, 원본 불변 | 명시+B-06,07 | test_edit_persists / test_boolean_string_rejected / test_patch_boundaries |
-| R-06 / AC-06 | 원본 각 행은 accepted/deduplicated/quarantined 중 하나, 코드/행 번호와 합계 표시 | 명시+B-03~05 | test_quality_balances / evaluator/score.py |
-| R-07 / AC-07 | HTTP 페이지/API 실제 동작, 문서/명령/테스트/한계 기록 | 명시+개발 판단 | test_http_end_to_end / test_http_errors / evidence.json |
+| ID/AC (모두 필수) | README 근거 | 데이터/관계 근거 | 인터뷰 근거 | 확정 상태 | 완료조건 | 연결 테스트 |
+|---|---|---|---|---|---|---|
+| R-01 / AC-01 | README R-01 프로파일/원본 불변 | CSV 5/6/16행, R3/S3 키 충돌/중복, raw 조인18행 | Q2~4→B-03~05 처리 정책 | 명시+합성 현업 확정 | 행 수·키·결측·관계/수지 보고, 원본 해시 불변 | test_profile_and_source_immutable |
+| R-02 / AC-02 | README R-02 목록/검색/필터 | routes.csv의 R3 두 행은 이름 상충, R4는 운휴 | Q2→B-03, Q6→B-06 | 명시+합성 현업 확정 | R1,R2,R4만 목록. trim+casefold 이름 부분검색/운행 필터, count/blocked 표시 | test_list_search_filter |
+| R-03 / AC-03 | README R-03 경유 순서·반복 정확성 | R1의 순번1/3은 S1 재등장, R2 순번2는 서로 다른 두 정류장 | Q1→B-01, Q3→B-04, Q4→B-05 | 명시+합성 현업 확정 | R1=S1,S2,S1,S3 (순번1,2,3,4); R2 blocked·경유0 | test_golden_route_and_blocked |
+| R-04 / AC-04 | README R-04 역조회, 운휴/오류 정책 확인 | S3를 R1/R2/R4가 공유하며 R2는 순번 충돌, R4는 운휴 | Q5→B-02, Q3→B-04 | 명시+합성 현업 확정 | S3→R1,R4, S1→R1 한 건, 없는 정류장404 | test_reverse_membership |
+| R-05 / AC-05 | README R-05 이름/운행 편집·영속성·원본 불변 | name/active 컬럼 존재. 입력 길이/JSON 타입/저장 정책은 데이터만으로 미결정 | Q6→B-06/07 | 명시+합성 현업 확정, JSON 방식은 개발 판단 | 이름/active만 수정·재시작 유지, trim 1~80자·JSON bool 외400, 원본 불변 | test_edit_persists / test_boolean_string_rejected / test_patch_boundaries |
+| R-06 / AC-06 | README R-06 처리 근거/행 번호/수지 | 5/6/16행 모두의 최종 처분 필요, 중복/참조/순번 오류와 연쇄 차단 존재 | Q2~4→B-03~05 | 명시+합성 현업 확정 | 각 원본 행은 accepted/deduplicated/quarantined 중 하나, 코드/행 번호·합계 일치 | test_quality_balances / evaluator/score.py |
+| R-07 / AC-07 | README R-07 실행·검증·지정 문서 | 해당없음: 실행/제출 요구이며 데이터에서 새 정책을 추론하지 않음 | 해당없음: README에 명시 | 명시+개발 판단 | HTTP 페이지/API 실제 동작, 실행 명령·문서·테스트·한계 기록 | test_http_end_to_end / test_http_errors / evidence.json |
 
 위 AC는 모두 필수다. 빈 결과의 위반 0건으로 만족시킬 수 없다: 목록 3개, R1 유효 경유 4개, S3 역조회 2개를 확인한다.
 검증 대상이 0개/전부 skip이면 INCOMPLETE다. 검증기는 각 테스트 군의 실제 실행/통과/skip 수를 기록한다.
@@ -50,6 +50,13 @@ AC-07-P(제공 가이드 반영): 기본127.0.0.1을 유지하고 `--host 0.0.0.
 Q1~Q6의 관찰·선택지·우선순위는 rehearsal/ANALYSIS.md, 답변/구현 영향은 INTERVIEW.md에 고정했다.
 B-01 재방문 보존 / B-02 공유+운휴 역조회 / B-03 완전동일 접기·충돌 격리 / B-04 전체 경유 차단 / B-05 행 격리 / B-06 입력 규칙 / B-07 저장 정책 모두 합성 확정.
 Golden Cases는 AC-03/04. 미확정 정책으로 임의 구현한 항목은 없다.
+
+## 요구사항 리뷰 상태
+
+이번 문서 감사에서 README R-01~07·CSV·합성 인터뷰와 위 요구/AC를 소급 대조했다. 과거 개발 전에 이 리뷰를 수행한 이력으로 소급해 주장하지 않는다.
+R-03은 반복 경유를 제거하면, R-04는 운휴를 빼면 Golden Case와 달라지므로 해당 업무 답변을 요구에 연결했다. R-07에 데이터/인터뷰 근거를 억지로 만들지 않았다.
+추가된 AC-07-P는 사용자 제공 환경 가이드에서 나온 기술적 실행 보완이며 원본 README에서 새 업무 기능을 유추한 것이 아니다.
+검토 방식: 동일 세션 자기검토. 범위: 기존 R-01~07의 근거/완료 조건, 새 지침의 요구사항 리뷰 절차. 개발자 본인의 이해 확인은 아직 미실행이다.
 
 ## 기술 결정·범위
 
