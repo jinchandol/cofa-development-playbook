@@ -1,6 +1,0 @@
-route_id,name,active
-R1,센터 순환,true
-R2,서문 지선,true
-R3,구간 노선,true
-R3,변경 노선,true
-R4,예비 노선,false

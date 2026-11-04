@@ -2,7 +2,7 @@
 
 180분 내 요구사항 구현, 데이터 검증, 판단 근거 설명을 연습하는 개인용 플레이북.
 SK하이닉스 또는 시험 주관사의 공식 자료가 아니다. 시험 조건은 사용자가 제공한 상세 가이드를 대조해 보강했으며 실제 최신 공지·과제 안내가 우선한다.
-모든 모의 데이터와 업무 규칙은 합성이다. 실제 문제·회사 데이터·개인정보·원본 PDF는 포함하지 않는다.
+실제 과제 자료는 별도 과제 폴더에 유지하며 이 저장소에 포함하지 않는다.
 
 ## 과제 원본을 보존하며 가져오기
 
@@ -31,7 +31,7 @@ git clone https://github.com/jinchandol/cofa-development-playbook.git ../cofa-pl
 ## 시작
 
 1. 설치 후 과제 폴더에서 Codex에 아래 요청을 입력한다. [PROMPTS.md](PROMPTS.md#시작)의 시작 요청 하나로 분석·리뷰·개발을 이어간다.
-2. 준비 연습에서는 [CONTRACT 템플릿](templates/CONTRACT.md), [DECISIONS 템플릿](templates/DECISIONS.md)을 사용한다. 실제 응시에서는 허용된 자료 경로·과제 지정 파일명을 따른다.
+2. 요구사항·판단 기록은 [CONTRACT 템플릿](templates/CONTRACT.md), [DECISIONS 템플릿](templates/DECISIONS.md)을 참고한다. 과제 지정 파일명과 양식을 우선한다.
 3. 분석·인터뷰 → 요구사항 리뷰 → 개발 → 구현 리뷰 → 이해·제출 순서로 진행한다. 먼저 구현할 요구부터 검토하고, 수정은 해당 결과물을 작성·개발했던 에이전트가 수행한다.
 4. AI 없이 6문항에 각각5분 답하는 연습을 한다. 실제 문항 수는 응시 화면을 확인하며, 서술형·질문 준비 대기도 전체 종료 시각 안에 마쳐야 한다.
 
@@ -63,65 +63,18 @@ git clone https://github.com/jinchandol/cofa-development-playbook.git ../cofa-pl
 안내서의 전체 종료14:00은 서술형/질문 준비에도 적용된다. 늦게 시작했거나 대기가 길면 위180분 예시보다 일찍 작업을 끝내야 한다. 대기는 약5분 고정으로 보장되지 않는다.
 P0: 실행 불가/원본 훼손/광범위 데이터 손상. P1: 필수 기능 오답·데이터 누락·계약 위반. P2: 핵심 기능을 막지 않는 사용성 문제.
 
-## 모의 과제 실행
-
-Python 3.10 이상과 브라우저만 필요하다. 패키지 설치 없음.
-
-```powershell
-cd practice/route-service
-python app.py --port 8765
-# 브라우저에서 http://127.0.0.1:8765
-```
-
-다른 터미널에서:
-
-```powershell
-cd practice/route-service
-python profile_data.py
-python rehearsal/verify.py --stage final
-python evaluator/score.py
-```
-
-검증기는 필수 테스트가 0개이거나 전부 skip이면 종료 코드 2(INCOMPLETE)로 막는다.
-선택 검사인 Node 문법 검사만 도구 부재 시 SKIP을 명시한다. 현재 테스트는 서비스/반례15개와 검증기 회귀6개다.
-로컬 실행의 기본 바인딩은127.0.0.1이다. 제공 가이드의 플랫폼 Browser용 실행 옵션은 다음과 같다.
-
-```text
-python app.py --host 0.0.0.0 --port 8765
-Browser: PORT=8765, 경로=/
-```
-
-실행 전에 Python 버전·기존 스택·실제 포트를 확인하고 서버 터미널을 유지한다. 두 모드의 로컬 HTTP/CLI 검증과 실제 플랫폼 미리보기는 구분한다.
-
-독립 연습을 하려면 처음에는 **practice/route-service/README.md와 data/만** 읽는다.
-`evaluator/`, 이미 작성된 `CONTRACT.md`, `DECISIONS.md`, `rehearsal/`, 구현 및 테스트는 첫 분석 전에 열지 않는다.
-평가자는 `evaluator/RULES.md`로 질문에 답하고, 분석자가 제출한 질문/탐지 목록을 정답과 대조한다.
-폴더 분리는 접근 통제가 아니다. 블라인드 연습은 별도 사본에서 evaluator/와 해설·구현을 제거해 진행한다.
-현재 포함된 완성 예시는 해설용이며 시간제한 실험의 성적이 아니다.
-
 ## 파일 안내
 
-```text
-README.md / AGENTS.md / PROMPTS.md / BENCHMARK.md
-install.sh                  # 과제 AGENTS에 참조 블록만 추가
-templates/CONTRACT.md / DECISIONS.md
-practice/route-service/
-  README.md                 # 응시자 문제
-  data/*.csv                # 수정 금지 합성 원본
-  app.py / domain.py        # 표준 라이브러리 서버·업무 로직
-  profile_data.py            # 스키마/관계/손실 검사
-  web/index.html / app.js / style.css
-  tests/test_service.py      # Developer 실행 검증
-  reviewer/test_adversarial.py # 별도 기준의 반례
-  CONTRACT.md / DECISIONS.md   # 리허설 결과 계약·판단
-  rehearsal/                # ANALYSIS/INTERVIEW/REVIEW/REPORT.md,
-                            # baseline/evidence/score/benchmark-before.json,
-                            # verify.py, run_suite.py, test_verification.py, cli_smoke.py
-  evaluator/                # RULES.md, defects.json, score.py (초기 분석 금지)
-```
+| 파일 | 용도 |
+|---|---|
+| [AGENTS.md](AGENTS.md) | 분석·개발·리뷰·실행 검증 규칙 |
+| [PROMPTS.md](PROMPTS.md) | 시작·이어서·이해 확인 요청과 Reviewer 전달문 |
+| [CONTRACT 템플릿](templates/CONTRACT.md) | 데이터 분석·인터뷰·요구사항·완료 조건 |
+| [DECISIONS 템플릿](templates/DECISIONS.md) | 판단·리뷰·실행 증거·이해 확인 기록 |
+| [install.sh](install.sh) | 과제 AGENTS에 플레이북 참조 블록 추가 |
+| [BENCHMARK.md](BENCHMARK.md) | 공개 준비 저장소에서 참고한 원칙과 출처 |
 
-실제 실행 결과·검출률·현재 한계는 [DECISIONS](practice/route-service/DECISIONS.md)과 [리허설 보고](practice/route-service/rehearsal/REPORT.md)에 기록한다.
-`.gitattributes`는 체크아웃 환경에 따라 CSV 줄바꿈과 기준 해시가 달라지는 것을 방지한다.
+웹 서비스의 `0.0.0.0` 바인딩·프로세스 기동/유지·HTTP/Browser 검증은 [AGENTS.md](AGENTS.md#웹-서비스-실행과-browser-검증)를 따른다.
 
 ## 응시와 제출 체크리스트
 

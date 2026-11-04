@@ -35,12 +35,14 @@ $COFA_BEGIN
 과제 원본 README.md·기존 AGENTS.md·공식 지침을 우선한다.
 플레이북 경로: $COFA_KIT_REF
 작업 전에 $COFA_KIT_REF/AGENTS.md를 읽고 지침을 적용한다.
-플레이북 안의 PROMPTS.md·templates/·practice/ 경로는 위 플레이북 기준이다.
+플레이북 안의 PROMPTS.md·templates/ 경로는 위 플레이북 기준이다.
 과제 README.md·데이터·결과물 경로는 과제 작업 폴더 기준이다.
 시작 요청과 Reviewer 전달문은 $COFA_KIT_REF/PROMPTS.md를 따른다.
 $COFA_END
 EOF
 )
+# 이전 버전의 완전한 참조 블록도 기존 내용을 보존하며 인식한다.
+COFA_LEGACY_BLOCK=$(printf '%s\n' "$COFA_BLOCK" | sed 's|PROMPTS.md·templates/ 경로|PROMPTS.md·templates/·practice/ 경로|')
 if [ -f "$COFA_AGENT_FILE" ]; then
   if grep -Fq "$COFA_BEGIN" "$COFA_AGENT_FILE" || grep -Fq "$COFA_END" "$COFA_AGENT_FILE"; then
     if COFA_INSTALLED=$(awk -v begin="$COFA_BEGIN" -v end="$COFA_END" '
@@ -49,7 +51,7 @@ if [ -f "$COFA_AGENT_FILE" ]; then
       inside { print }
       $0 == end { ends++; if (!inside) bad=1; inside=0 }
       END { if (starts != 1 || ends != 1 || inside || bad) exit 1 }
-    ' "$COFA_AGENT_FILE") && [ "$COFA_INSTALLED" = "$COFA_BLOCK" ]; then
+    ' "$COFA_AGENT_FILE") && { [ "$COFA_INSTALLED" = "$COFA_BLOCK" ] || [ "$COFA_INSTALLED" = "$COFA_LEGACY_BLOCK" ]; }; then
       printf '%s\n' '이미 같은 플레이북이 연결되어 있습니다. 변경 없음.'
       exit 0
     fi
