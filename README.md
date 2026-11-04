@@ -17,13 +17,15 @@ git clone https://github.com/jinchandol/cofa-development-playbook.git ../cofa-ki
   과제/                  # 작업 위치 유지
     README.md            # 과제 원본 유지
     AGENTS.md            # 설치 시 생성, 분석 후 과제별 지침 추가
+    CONTRACT.md          # 시작 후 Codex가 작성: 요구사항·완료 조건
+    DECISIONS.md         # 시작 후 Codex가 작성: 판단·검증·다음 행동
     data/                # 과제 원본 유지
   cofa-kit/              # 별도 Git 저장소, 설치 후에도 유지
     README.md            # 준비 안내
     AGENTS.md / PROMPTS.md / templates/ / install.sh
 ```
 
-설치기는 과제 루트에 AGENTS.md를 새로 생성해 COFA Kit의 공통 작업 규칙을 연결한다. 분석 후 에이전트가 과제별 실행 명령·포트·검증 명령·확정된 주의점을 추가한다. 세부 요구사항과 판단 기록은 CONTRACT/DECISIONS에 정리한다.
+설치기는 과제 루트에 AGENTS.md를 새로 생성해 COFA Kit의 공통 작업 규칙을 연결한다. 시작 프롬프트를 수행하는 Codex가 과제 루트의 CONTRACT.md·DECISIONS.md를 작성한다. 없는 파일만 Kit의 templates/CONTRACT.md·templates/DECISIONS.md에서 각각 복사해 초기 생성하고, 템플릿 구조에 맞춰 채운다. 이미 있는 파일은 덮어쓰지 않고 읽고 갱신한다. 과제 지정 문서명·경로·양식을 우선하며 Kit 원본 템플릿은 보존한다. 분석 후 과제 AGENTS.md에는 실행 명령·포트·검증 명령·확정된 주의점을 추가한다.
 이미 직접 작성한 AGENTS.md가 있으면 원문을 보존하고 참조 블록만 추가한다. 같은 경로로 재실행해도 중복 추가하지 않는다. 과제 README.md·데이터·.git·.codex 설정은 변경하지 않는다. 기존의 불완전한 참조 블록이나 다른 경로가 발견되면 덮어쓰지 않고 중단한다.
 COFA Kit 파일 전체를 과제 루트로 복사하거나 기존 저장소에 pull/merge하지 않는다. 목적지 ../cofa-kit이 이미 사용 중이면 clone을 중단하고 기존 폴더를 확인한다.
 

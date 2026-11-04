@@ -3,7 +3,8 @@
 공식 과제 지침과 사용자의 지시가 최우선이다.
 이 문서의 PROMPTS.md·templates/는 COFA Kit 위치 기준이며, 원본 README·데이터·결과물은 과제 작업 폴더 기준이다. 반입은 COFA Kit README.md의 clone/설치 절차를 따른다.
 
-실제 과제의 AGENTS.md는 우리가 새로 작성한다. install.sh로 과제 루트에 초기 파일을 생성하고, 분석 후 원래 담당 에이전트가 실행 명령·포트·검증 명령·확정된 주의점을 보완한다. 세부 요구사항은 CONTRACT.md, 판단·검증 기록은 DECISIONS.md에 두어 중복을 줄인다.
+실제 과제의 AGENTS.md는 우리가 새로 작성한다. install.sh로 과제 루트에 초기 파일을 생성하고, 분석 후 원래 담당 에이전트가 실행 명령·포트·검증 명령·확정된 주의점을 보완한다.
+시작 요청을 수행하는 에이전트는 과제 루트의 CONTRACT.md(요구사항·완료 조건)와 DECISIONS.md(판단·검증 기록)를 작성한다. 없는 파일만 COFA Kit의 templates/CONTRACT.md·templates/DECISIONS.md에서 각각 복사해 초기 생성하고, 템플릿 구조에 맞춰 작성한다. 기존 파일은 덮어쓰지 않고 읽고 갱신한다. 과제 지정 문서명·경로·양식을 우선하며 Kit 원본 템플릿과 미확정·미실행 상태는 보존한다.
 
 ## 분석과 요구사항
 
