@@ -13,7 +13,7 @@ if [ "$COFA_KIT_ROOT" = "$COFA_TASK_ROOT" ] || [ ! -f "$COFA_TASK_ROOT/README.md
   printf '%s\n' '과제 README.md가 있는 폴더에서 실행하세요. COFA Kit 폴더에서는 설치하지 않습니다.' >&2
   exit 1
 fi
-for COFA_SOURCE in AGENTS.md PROMPTS.md templates/CONTRACT.md templates/DECISIONS.md; do
+for COFA_SOURCE in AGENTS.md PROMPTS.md templates/CONTRACT.md templates/DECISIONS.md templates/STUDY.md; do
   if [ ! -f "$COFA_KIT_ROOT/$COFA_SOURCE" ]; then
     printf 'COFA Kit 파일이 없습니다: %s\n' "$COFA_SOURCE" >&2
     exit 1
